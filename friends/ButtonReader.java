@@ -1,4 +1,4 @@
-package org.friends;
+package friends;
 
 import java.util.function.BooleanSupplier;
 

@@ -1,4 +1,4 @@
-package org.friends;
+package friends;
 public enum GamepadButton {
     A,
     CROSS,

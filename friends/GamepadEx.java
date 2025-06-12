@@ -1,4 +1,4 @@
-package org.friends;
+package friends;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class GamepadEx {
         gamepad = gp;
     }
 
-    public void bindPos(GamepadButton btn, BiConsumer<Gamepad, ButtonReader> callback) {
+    public void bind(GamepadButton btn, BiConsumer<Gamepad, ButtonReader> callback) {
         if(bindingsPos.containsKey(btn)) return;
         if(!buttonReaders.containsKey(btn)) {
             ButtonReader reader = new ButtonReader(this, btn);
@@ -27,7 +27,7 @@ public class GamepadEx {
         bindingsPos.put(btn, callback);
     }
 
-    public void bindNeg(GamepadButton btn, BiConsumer<Gamepad, ButtonReader> callback) {
+    public void bindN(GamepadButton btn, BiConsumer<Gamepad, ButtonReader> callback) {
         if(bindingsNeg.containsKey(btn)) return;
         if(!buttonReaders.containsKey(btn)) {
             ButtonReader reader = new ButtonReader(this, btn);
@@ -41,8 +41,8 @@ public class GamepadEx {
             GamepadButton btn,
             BiConsumer<Gamepad, ButtonReader> pos,
             BiConsumer<Gamepad, ButtonReader> neg) {
-        bindPos(btn, pos);
-        bindNeg(btn, neg);
+        bind(btn, pos);
+        bindN(btn, neg);
     }
 
 
