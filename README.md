@@ -52,6 +52,8 @@ public void runOpMode() {
     while(opModeIsActive()) {
         // Needed to keep button state correct
         primary.update(gamepad1);
+
+        telemetry.update();
     }
 }
 ```
