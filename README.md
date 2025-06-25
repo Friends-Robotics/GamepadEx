@@ -26,26 +26,12 @@ public void runOpMode() {
     // This will be used instead of gamepad1
     GamepadEx primary = new GamepadEx(gamepad1);
 
-    // XBOX buttons are also accepted
-    // primary.bind(A, ...);
+    primary.down(CIRCLE, () -> telemetry.addLine("Pressed Circle"));
 
-    // When CROSS is pressed, run the code below
-    primary.bind(CROSS, (gamepad, reader) -> {
-        telemetry.addLine("Button A is pressed!");
-    };
+    // Edge detectors are also accessable
+    primary.pressed(A, claw::open);
 
-    // You can also use bindN
-    // When CROSS isn't pressed, run the code below
-    primary.bindN(CROSS, (gamepad, reader) -> {
-        telemetry.addLine("Button A is NOT pressed!");
-    });
-
-    // Edge detectors are also accessable through the reader
-    primary.bind(B, (gamepad, reader) -> {
-        // Will only run once when the button is pressed
-        if(!reader.justPressed()) return;
-        gamepad.setLedColor(255, 0, 0, -1);
-    });
+    primary.released(A, claw::close);
 
     // ...
 
